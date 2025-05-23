@@ -1,5 +1,5 @@
 """
-Module de gestion des exceptions pour le convertisseur XML/YAML.
+Exceptions personnalisées pour le convertisseur XML/YAML.
 """
 
 class ConverterError(Exception):
@@ -7,15 +7,15 @@ class ConverterError(Exception):
     pass
 
 class FileError(ConverterError):
-    """Exception liée aux fichiers."""
+    """Erreur liée aux fichiers."""
     pass
 
 class ValidationError(ConverterError):
-    """Exception liée à la validation."""
+    """Erreur de validation."""
     pass
 
 class ConversionError(ConverterError):
-    """Exception liée à la conversion."""
+    """Erreur de conversion."""
     pass
 
 class ConfigurationError(ConverterError):

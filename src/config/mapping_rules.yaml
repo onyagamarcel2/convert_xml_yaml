@@ -1,0 +1,184 @@
+# Règles de mapping DrawIO vers Threagile
+
+# Mapping des types de composants
+component_types:
+  web-application:
+    - "web-app"
+    - "webapp"
+    - "web_application"
+  mobile-app:
+    - "mobile-app"
+    - "mobileapp"
+    - "mobile_application"
+  service:
+    - "service"
+    - "microservice"
+    - "api"
+  database:
+    - "database"
+    - "db"
+    - "sql"
+    - "nosql"
+  file-storage:
+    - "storage"
+    - "file-storage"
+    - "object-storage"
+  message-queue:
+    - "queue"
+    - "message-queue"
+    - "message-broker"
+  load-balancer:
+    - "load-balancer"
+    - "loadbalancer"
+    - "lb"
+  reverse-proxy:
+    - "reverse-proxy"
+    - "reverseproxy"
+    - "proxy"
+  waf:
+    - "waf"
+    - "web-application-firewall"
+  ids:
+    - "ids"
+    - "intrusion-detection"
+  ips:
+    - "ips"
+    - "intrusion-prevention"
+  vpn:
+    - "vpn"
+    - "virtual-private-network"
+  firewall:
+    - "firewall"
+    - "fw"
+  gateway:
+    - "gateway"
+    - "api-gateway"
+    - "service-gateway"
+
+# Mapping des types d'assets techniques
+technical_asset_types:
+  application:
+    - "application"
+    - "app"
+  service:
+    - "service"
+    - "microservice"
+  database:
+    - "database"
+    - "db"
+  storage:
+    - "storage"
+    - "file-storage"
+  queue:
+    - "queue"
+    - "message-queue"
+  network:
+    - "network"
+    - "network-device"
+  security:
+    - "security"
+    - "security-device"
+
+# Mapping des types de relations
+relation_types:
+  data-flow:
+    - "data-flow"
+    - "dataflow"
+    - "flow"
+  trust-boundary:
+    - "trust-boundary"
+    - "trustboundary"
+    - "boundary"
+  communication:
+    - "communication"
+    - "comm"
+  dependency:
+    - "dependency"
+    - "depends-on"
+  inheritance:
+    - "inheritance"
+    - "extends"
+  composition:
+    - "composition"
+    - "composed-of"
+  aggregation:
+    - "aggregation"
+    - "aggregates"
+  association:
+    - "association"
+    - "associated-with"
+
+# Mapping des niveaux de sécurité
+security_levels:
+  confidentiality:
+    public:
+      - "public"
+      - "unclassified"
+    internal:
+      - "internal"
+      - "company-internal"
+    restricted:
+      - "restricted"
+      - "confidential"
+    confidential:
+      - "confidential"
+      - "sensitive"
+    strictly-confidential:
+      - "strictly-confidential"
+      - "top-secret"
+  
+  integrity:
+    operational:
+      - "operational"
+      - "normal"
+    important:
+      - "important"
+      - "significant"
+    critical:
+      - "critical"
+      - "crucial"
+    mission-critical:
+      - "mission-critical"
+      - "vital"
+  
+  availability:
+    operational:
+      - "operational"
+      - "normal"
+    important:
+      - "important"
+      - "significant"
+    critical:
+      - "critical"
+      - "crucial"
+    mission-critical:
+      - "mission-critical"
+      - "vital"
+
+# Règles de validation
+validation_rules:
+  component_naming: "^[a-z0-9-]+$"
+  asset_naming: "^[a-z0-9-]+$"
+  date_format: "^\\d{4}-\\d{2}-\\d{2}$"
+  min_description_length: 10
+  max_description_length: 500
+  min_name_length: 3
+  max_name_length: 100
+  allowed_special_chars: "-_"
+  max_tags: 10
+  max_technical_assets: 50
+  max_data_assets: 50
+  max_trust_boundaries: 20
+  max_relations: 100
+
+# Règles de conformité
+compliance_rules:
+  required_trust_boundaries: true
+  required_data_assets: true
+  required_technical_assets: true
+  unique_ids: true
+  valid_relationships: true
+  required_security_controls: true
+  required_compliance_requirements: true
+  required_cia_ratings: true
+  required_justifications: true

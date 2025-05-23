@@ -1,22 +1,22 @@
-# 🔄 Convertisseur XML/YAML
+# 🔄 DrawIO to Threagile Converter
 
 [![Python Version](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-[![Code Coverage](https://img.shields.io/codecov/c/github/onyagamarcel2/convertisseur-xml-yaml)](https://codecov.io/gh/onyagamarcel2/convertisseur-xml-yaml)
+[![Code Coverage](https://img.shields.io/codecov/c/github/onyagamarcel2/drawio-to-threagile)](https://codecov.io/gh/onyagamarcel2/drawio-to-threagile)
 [![Documentation](https://img.shields.io/badge/docs-latest-brightgreen)](docs/usage.md)
 
-> Un outil en ligne de commande puissant pour convertir des fichiers entre les formats XML et YAML.
+> Un outil en ligne de commande puissant pour convertir des diagrammes d'architecture DrawIO (XML) en modèles de sécurité Threagile (YAML). Transformez facilement vos diagrammes d'architecture en modèles de menaces structurés.
 
 ## Topics
 
-[![xml](https://img.shields.io/badge/topic-xml-blue)](https://github.com/topics/xml)
-[![yaml](https://img.shields.io/badge/topic-yaml-blue)](https://github.com/topics/yaml)
-[![converter](https://img.shields.io/badge/topic-converter-blue)](https://github.com/topics/converter)
+[![drawio](https://img.shields.io/badge/topic-drawio-blue)](https://github.com/topics/drawio)
+[![threagile](https://img.shields.io/badge/topic-threagile-blue)](https://github.com/topics/threagile)
+[![security](https://img.shields.io/badge/topic-security-blue)](https://github.com/topics/security)
 [![python](https://img.shields.io/badge/topic-python-blue)](https://github.com/topics/python)
 [![cli](https://img.shields.io/badge/topic-cli-blue)](https://github.com/topics/cli)
-[![data-conversion](https://img.shields.io/badge/topic-data--conversion-blue)](https://github.com/topics/data-conversion)
-[![file-processing](https://img.shields.io/badge/topic-file--processing-blue)](https://github.com/topics/file-processing)
-[![format-conversion](https://img.shields.io/badge/topic-format--conversion-blue)](https://github.com/topics/format-conversion)
+[![threat-modeling](https://img.shields.io/badge/topic-threat--modeling-blue)](https://github.com/topics/threat-modeling)
+[![xml](https://img.shields.io/badge/topic-xml-blue)](https://github.com/topics/xml)
+[![yaml](https://img.shields.io/badge/topic-yaml-blue)](https://github.com/topics/yaml)
 
 ## 📋 Table des Matières
 
@@ -31,14 +31,14 @@
 
 ## ✨ Fonctionnalités
 
-- 🔄 Conversion bidirectionnelle (XML ↔ YAML)
+- 🔄 Conversion automatique de diagrammes DrawIO XML vers YAML Threagile
 - 📁 Support des fichiers et répertoires
-- 📝 Entrée/sortie standard
-- 📂 Préservation de la structure des répertoires
-- ✅ Validation des formats
-- 📊 Vérification de la taille des fichiers
-- 📝 Journalisation détaillée
-- 🛡️ Gestion robuste des erreurs
+- ✅ Validation des modèles Threagile générés
+- 🔍 Détection automatique des composants et relations
+- 🛡️ Mapping intelligent des attributs de sécurité
+- 📊 Génération de rapports détaillés de conversion
+- 📝 Journalisation complète des transformations
+- ⚙️ Configuration flexible des règles de mapping
 
 ## 🚀 Installation
 
@@ -97,86 +97,153 @@ convertisseur repertoire/ -r
 
 ```mermaid
 flowchart TB
-    %% Composants Principaux
-    CLI[CLI] -->|1| Converter[Converter]
-    CLI -->|2| Config[Config]
-    
-    %% Flux de Conversion
-    Converter -->|3| FileHandler[FileHandler]
-    Converter -->|4| Validator[Validator]
-    Converter -->|5| ExceptionHandler[ExceptionHandler]
-    Converter -->|6| Logger[Logger]
-    
-    %% Flux de Validation
-    Validator -->|7| XMLValidator[XMLValidator]
-    Validator -->|8| YAMLValidator[YAMLValidator]
-    Validator -->|9| ConsistencyChecker[ConsistencyChecker]
-    
-    %% Flux de Gestion des Fichiers
-    FileHandler -->|10| FileReader[FileReader]
-    FileHandler -->|11| FileWriter[FileWriter]
-    FileHandler -->|12| DirManager[DirManager]
-    
-    %% Flux de Gestion des Erreurs
-    ExceptionHandler -->|13| FileErrors[FileErrors]
-    ExceptionHandler -->|14| ValidationErrors[ValidationErrors]
-    ExceptionHandler -->|15| ConversionErrors[ConversionErrors]
-    
-    %% Ressources Externes
-    FileReader -->|16| Files[Files]
-    FileWriter -->|17| Files
-    DirManager -->|18| Dirs[Dirs]
-    
-    %% Validation des Formats
-    XMLValidator -->|19| XML[XML]
-    YAMLValidator -->|20| YAML[YAML]
-    
-    %% Sous-graphes pour Organisation
+    %% Direction générale de gauche à droite
+    direction LR
+
+    %% Interface Utilisateur
     subgraph UI[Interface Utilisateur]
-        CLI
-        Config
+        direction TB
+        CLI[CLI] -->|1| Config[Config]
     end
-    
+
+    %% Noyau de Conversion
     subgraph Core[Noyau de Conversion]
-        Converter
-        Logger
+        direction TB
+        Converter[Converter]
     end
-    
-    subgraph FileMgmt[Gestion des Fichiers]
-        FileHandler
-        FileReader
-        FileWriter
-        DirManager
+
+    %% Processus de Conversion
+    subgraph Process[Processus de Conversion]
+        direction TB
+        Parser[DrawIO Parser]
+        Mapper[Threagile Mapper]
+        Validator[Threagile Validator]
+        Reporter[Reporter]
     end
-    
+
+    %% Détection
+    subgraph Detection[Détection]
+        direction TB
+        ComponentDetector[Component Detector]
+        FlowDetector[Flow Detector]
+        ThreatDetector[Threat Detector]
+        CompositeManager[Composite Manager]
+        StyleAnalyzer[Style Analyzer]
+        ContextManager[Context Manager]
+    end
+
+    %% Mapping
+    subgraph Mapping[Mapping]
+        direction TB
+        ComponentMapper[Component Mapper]
+        RelationMapper[Relation Mapper]
+        SecurityMapper[Security Mapper]
+        TypeMapper[Type Mapper]
+        AttributeMapper[Attribute Mapper]
+        SecurityLevelMapper[Security Level Mapper]
+        ComplianceMapper[Compliance Mapper]
+    end
+
+    %% Validation
     subgraph Validation[Validation]
-        Validator
-        XMLValidator
-        YAMLValidator
-        ConsistencyChecker
+        direction TB
+        SchemaValidator[Schema Validator]
+        SecurityValidator[Security Validator]
+        ReferenceValidator[Reference Validator]
+        NamingValidator[Naming Validator]
+        StructureValidator[Structure Validator]
+        CIAValidator[CIA Validator]
+        ControlValidator[Control Validator]
+        XMLValidator[XML Validator]
+        YAMLValidator[YAML Validator]
     end
-    
-    subgraph ErrorMgmt[Gestion des Erreurs]
-        ExceptionHandler
-        FileErrors
-        ValidationErrors
-        ConversionErrors
+
+    %% Gestion des Fichiers
+    subgraph FileMgmt[Gestion des Fichiers]
+        direction TB
+        FileHandler[File Handler]
+        FileReader[File Reader]
+        FileWriter[File Writer]
+        DirManager[Directory Manager]
     end
-    
+
+    %% Ressources
     subgraph Resources[Ressources]
-        Files
-        Dirs
-        XML
-        YAML
+        direction TB
+        Files[Files]
+        Dirs[Dirs]
+        XML[XML]
+        YAML[YAML]
     end
-    
+
+    %% Flux principaux
+    UI -->|2| Core
+    Core -->|3| Process
+    Process -->|4| Detection
+    Process -->|5| Mapping
+    Process -->|6| Validation
+    Process -->|7| FileMgmt
+    FileMgmt -->|8| Resources
+
+    %% Flux de Parsing
+    Parser -->|9| ComponentDetector
+    Parser -->|10| FlowDetector
+    Parser -->|11| ThreatDetector
+    Parser -->|12| FileReader
+    Parser -->|13| XMLValidator
+
+    %% Flux de Mapping
+    Mapper -->|14| ComponentMapper
+    Mapper -->|15| RelationMapper
+    Mapper -->|16| SecurityMapper
+    Mapper -->|17| FileWriter
+    Mapper -->|18| YAMLValidator
+
+    %% Flux de Validation
+    Validator -->|19| SchemaValidator
+    Validator -->|20| SecurityValidator
+    Validator -->|21| ReferenceValidator
+    Validator -->|22| XMLValidator
+    Validator -->|23| YAMLValidator
+
+    %% Flux de Détection
+    ComponentDetector -->|24| CompositeManager
+    ComponentDetector -->|25| StyleAnalyzer
+    ComponentDetector -->|26| ContextManager
+
+    %% Flux de Mapping
+    ComponentMapper -->|27| TypeMapper
+    ComponentMapper -->|28| AttributeMapper
+    SecurityMapper -->|29| SecurityLevelMapper
+    SecurityMapper -->|30| ComplianceMapper
+
+    %% Flux de Validation
+    SchemaValidator -->|31| NamingValidator
+    SchemaValidator -->|32| StructureValidator
+    SecurityValidator -->|33| CIAValidator
+    SecurityValidator -->|34| ControlValidator
+
+    %% Flux de Gestion des Fichiers
+    FileHandler -->|35| FileReader
+    FileHandler -->|36| FileWriter
+    FileHandler -->|37| DirManager
+
+    %% Flux vers les Ressources
+    FileReader -->|38| Files
+    FileWriter -->|39| Files
+    DirManager -->|40| Dirs
+    XMLValidator -->|41| XML
+    YAMLValidator -->|42| YAML
+
     %% Styles
     classDef primary fill:#f9f,stroke:#333,stroke-width:2px
     classDef secondary fill:#bbf,stroke:#333,stroke-width:2px
-    classDef resource fill:#bfb,stroke:#333,stroke-width:2px
+    classDef tertiary fill:#bfb,stroke:#333,stroke-width:2px
+    classDef resource fill:#fbb,stroke:#333,stroke-width:2px
     
     class CLI,Converter primary
-    class FileHandler,Validator,ExceptionHandler secondary
+    class Parser,Mapper,Validator secondary
+    class ComponentDetector,ComponentMapper,SecurityMapper tertiary
     class Files,Dirs,XML,YAML resource
 ```
 
@@ -186,34 +253,77 @@ flowchart TB
 sequenceDiagram
     participant U as Utilisateur
     participant CLI as Interface CLI
-    participant C as Convertisseur
-    participant V as Validateur
-    participant F as Gestionnaire Fichiers
-    participant E as Gestionnaire Erreurs
-    participant L as Logger
+    participant C as Converter
+    participant P as Parser
+    participant M as Mapper
+    participant V as Validator
+    participant R as Reporter
+    participant CD as ComponentDetector
+    participant FD as FlowDetector
+    participant TD as ThreatDetector
+    participant CM as ComponentMapper
+    participant RM as RelationMapper
+    participant SM as SecurityMapper
+    participant SV as SchemaValidator
+    participant SecV as SecurityValidator
+    participant RV as ReferenceValidator
+    participant FH as FileHandler
+    participant FR as FileReader
+    participant FW as FileWriter
+    participant DM as DirManager
+    participant XV as XMLValidator
+    participant YV as YAMLValidator
 
     U->>CLI: Commande de conversion
-    CLI->>L: Log début conversion
-    CLI->>F: Vérifie fichier
-    F-->>CLI: Statut fichier
     CLI->>C: Lance conversion
-    C->>F: Lit fichier
-    F-->>C: Contenu
-    C->>V: Valide format
-    V-->>C: Résultat validation
-    alt Format valide
-        C->>C: Convertit
-        C->>F: Écrit résultat
-        F-->>C: Confirmation
-        C->>L: Log succès
-        C-->>CLI: Succès
-    else Format invalide
-        C->>E: Signale erreur
-        E->>L: Log erreur
-        E-->>CLI: Message erreur
-    end
-    CLI->>L: Log fin conversion
-    CLI-->>U: Résultat
+    
+    %% Phase de Parsing
+    C->>P: Démarre parsing
+    P->>FR: Lit fichier XML
+    FR-->>P: Contenu XML
+    P->>XV: Valide format XML
+    XV-->>P: Validation XML OK
+    P->>CD: Détecte composants
+    CD-->>P: Composants détectés
+    P->>FD: Détecte flux
+    FD-->>P: Flux détectés
+    P->>TD: Détecte menaces
+    TD-->>P: Menaces détectées
+    P-->>C: Parsing terminé
+
+    %% Phase de Mapping
+    C->>M: Démarre mapping
+    M->>CM: Map composants
+    CM-->>M: Composants mappés
+    M->>RM: Map relations
+    RM-->>M: Relations mappées
+    M->>SM: Map sécurité
+    SM-->>M: Sécurité mappée
+    M->>YV: Valide format YAML
+    YV-->>M: Validation YAML OK
+    M-->>C: Mapping terminé
+
+    %% Phase de Validation
+    C->>V: Démarre validation
+    V->>SV: Valide schéma
+    SV-->>V: Schéma validé
+    V->>SecV: Valide sécurité
+    SecV-->>V: Sécurité validée
+    V->>RV: Valide références
+    RV-->>V: Références validées
+    V-->>C: Validation terminée
+
+    %% Phase d'Écriture
+    C->>FW: Écrit résultat
+    FW-->>C: Écriture terminée
+
+    %% Phase de Reporting
+    C->>R: Génère rapport
+    R-->>C: Rapport généré
+
+    %% Fin de Conversion
+    C-->>CLI: Conversion terminée
+    CLI-->>U: Résultat affiché
 ```
 
 ## 📚 Documentation

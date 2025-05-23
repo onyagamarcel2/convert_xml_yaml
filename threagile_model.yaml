@@ -1,0 +1,8 @@
+data_flows: []
+project:
+  description: Architecture converted from DrawIO diagram
+  name: Architecture from DrawIO
+  version: 1.0.0
+security_controls: []
+technical_assets: []
+threats: []

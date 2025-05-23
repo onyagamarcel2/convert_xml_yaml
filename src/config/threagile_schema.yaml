@@ -1,0 +1,277 @@
+# Schéma de validation Threagile
+
+# Champs requis au niveau racine
+required_fields:
+  title: str
+  description: str
+  date: str
+  author: str
+  components: list
+  data_assets: list
+  trust_boundaries: list
+  technical_assets: list
+  relations: list
+
+# Schéma des composants
+component_schema:
+  required_fields:
+    id: str
+    name: str
+    type: str
+    description: str
+  optional_fields:
+    tags: list
+    technical_assets: list
+    data_assets: list
+    trust_boundaries: list
+    security_controls: list
+    compliance_requirements: list
+  validation_rules:
+    id:
+      pattern: "^[a-z0-9-]+$"
+      unique: true
+    name:
+      min_length: 3
+      max_length: 100
+      pattern: "^[a-z0-9-]+$"
+    description:
+      min_length: 10
+      max_length: 500
+    type:
+      enum:
+        - web-application
+        - mobile-app
+        - service
+        - database
+        - file-storage
+        - message-queue
+        - load-balancer
+        - reverse-proxy
+        - waf
+        - ids
+        - ips
+        - vpn
+        - firewall
+        - gateway
+
+# Schéma des assets techniques
+technical_asset_schema:
+  required_fields:
+    id: str
+    name: str
+    type: str
+    description: str
+    usage: str
+    owner: str
+    confidentiality: str
+    integrity: str
+    availability: str
+    justification_cia_rating: str
+  optional_fields:
+    multi_tenant: bool
+    redundant: bool
+    custom_developed_parts: bool
+    encryption: str
+    authentication: str
+    authorization: str
+    justification_authentication: str
+    justification_authorization: str
+    security_controls: list
+    compliance_requirements: list
+    vulnerabilities: list
+    threats: list
+  validation_rules:
+    id:
+      pattern: "^[a-z0-9-]+$"
+      unique: true
+    name:
+      min_length: 3
+      max_length: 100
+      pattern: "^[a-z0-9-]+$"
+    description:
+      min_length: 10
+      max_length: 500
+    type:
+      enum:
+        - application
+        - service
+        - database
+        - storage
+        - queue
+        - network
+        - security
+    confidentiality:
+      enum:
+        - public
+        - internal
+        - restricted
+        - confidential
+        - strictly-confidential
+    integrity:
+      enum:
+        - operational
+        - important
+        - critical
+        - mission-critical
+    availability:
+      enum:
+        - operational
+        - important
+        - critical
+        - mission-critical
+
+# Schéma des assets de données
+data_asset_schema:
+  required_fields:
+    id: str
+    name: str
+    description: str
+    usage: str
+    owner: str
+    confidentiality: str
+    integrity: str
+    availability: str
+    justification_cia_rating: str
+  optional_fields:
+    storage: str
+    format: str
+    origin: str
+    quantity: str
+    tags: list
+    security_controls: list
+    compliance_requirements: list
+    data_classification: str
+    retention_period: str
+    backup_frequency: str
+  validation_rules:
+    id:
+      pattern: "^[a-z0-9-]+$"
+      unique: true
+    name:
+      min_length: 3
+      max_length: 100
+      pattern: "^[a-z0-9-]+$"
+    description:
+      min_length: 10
+      max_length: 500
+    confidentiality:
+      enum:
+        - public
+        - internal
+        - restricted
+        - confidential
+        - strictly-confidential
+    integrity:
+      enum:
+        - operational
+        - important
+        - critical
+        - mission-critical
+    availability:
+      enum:
+        - operational
+        - important
+        - critical
+        - mission-critical
+
+# Schéma des limites de confiance
+trust_boundary_schema:
+  required_fields:
+    id: str
+    name: str
+    description: str
+    type: str
+  optional_fields:
+    components: list
+    technical_assets: list
+    data_assets: list
+    security_controls: list
+    compliance_requirements: list
+  validation_rules:
+    id:
+      pattern: "^[a-z0-9-]+$"
+      unique: true
+    name:
+      min_length: 3
+      max_length: 100
+      pattern: "^[a-z0-9-]+$"
+    description:
+      min_length: 10
+      max_length: 500
+    type:
+      enum:
+        - network
+        - physical
+        - logical
+        - organizational
+        - legal
+        - regulatory
+
+# Schéma des relations
+relation_schema:
+  required_fields:
+    id: str
+    name: str
+    description: str
+    type: str
+    source: str
+    target: str
+  optional_fields:
+    protocol: str
+    authentication: str
+    authorization: str
+    encryption: str
+    data_assets: list
+    tags: list
+    security_controls: list
+    compliance_requirements: list
+  validation_rules:
+    id:
+      pattern: "^[a-z0-9-]+$"
+      unique: true
+    name:
+      min_length: 3
+      max_length: 100
+      pattern: "^[a-z0-9-]+$"
+    description:
+      min_length: 10
+      max_length: 500
+    type:
+      enum:
+        - data-flow
+        - trust-boundary
+        - communication
+        - dependency
+        - inheritance
+        - composition
+        - aggregation
+        - association
+    source:
+      reference: true
+    target:
+      reference: true
+
+# Règles de conformité
+compliance_rules:
+  required_trust_boundaries: true
+  required_data_assets: true
+  required_technical_assets: true
+  unique_ids: true
+  valid_relationships: true
+  required_security_controls: true
+  required_compliance_requirements: true
+  required_cia_ratings: true
+  required_justifications: true
+
+# Règles de validation globales
+global_validation_rules:
+  max_components: 100
+  max_technical_assets: 200
+  max_data_assets: 100
+  max_trust_boundaries: 50
+  max_relations: 500
+  max_tags_per_element: 10
+  max_security_controls_per_element: 20
+  max_compliance_requirements_per_element: 20
+  max_vulnerabilities_per_asset: 50
+  max_threats_per_asset: 50

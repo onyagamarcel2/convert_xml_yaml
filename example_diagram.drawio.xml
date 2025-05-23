@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" modified="2024-01-01T00:00:00.000Z" agent="Mozilla/5.0" version="21.6.6" etag="example" type="device">
+  <diagram id="architecture" name="Architecture">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Composants -->
+        <mxCell id="web_frontend" value="Interface Web" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="120" y="120" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="api_backend" value="API Backend" style="shape=rectangle;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="360" y="120" width="120" height="60" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="database" value="Base de Données" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="600" y="120" width="60" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Flux -->
+        <mxCell id="flow1" value="Requêtes HTTP" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="web_frontend" target="api_backend">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="flow2" value="Requêtes DB" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="api_backend" target="database">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Menaces -->
+        <mxCell id="threat1" value="XSS Attack" style="shape=cloud;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="120" y="240" width="120" height="80" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="threat2" value="SQL Injection" style="shape=cloud;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="600" y="240" width="120" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- Connexions des menaces -->
+        <mxCell id="threat_flow1" value="" style="endArrow=classic;html=1;dashed=1;strokeColor=#d6b656;" edge="1" parent="1" source="threat1" target="web_frontend">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+        
+        <mxCell id="threat_flow2" value="" style="endArrow=classic;html=1;dashed=1;strokeColor=#d6b656;" edge="1" parent="1" source="threat2" target="database">
+          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile> 
